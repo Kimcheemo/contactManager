@@ -1,0 +1,61 @@
+
+body {
+    width: auto;
+    height: auto;
+    margin: auto auto;
+}
+
+h1 {
+    margin: 25px 25px 100px 50px;
+    text-align: left;
+}
+
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 375px;
+    height: 375px;
+    margin: 0 auto;
+}
+
+#loginForms {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.loginHead {
+    text-align: center;
+    margin: 5px auto;
+}
+
+input {
+    width: 325px;
+    height: 25px;
+    margin: 15px auto;
+    border: none;
+    outline: none;
+    border-bottom: black 1px solid;
+}
+
+.over {
+    position: relative;
+    bottom: 40px;
+    left: 1px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+
+input:focus + label,
+input:valid + label {
+    transform: translateY(-20px);
+}
+
+
+
+
