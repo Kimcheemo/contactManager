@@ -1,13 +1,23 @@
 
+
 body {
-    width: auto;
-    height: auto;
-    margin: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #37313b;
+}
+
+h1, h2 {
+    margin: 0px 0px 0 225px;
+    text-align: left;
+    font-size: 205px;
+    letter-spacing: 1px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #fefefc;
 }
 
 h1 {
-    margin: 25px 25px 100px 50px;
-    text-align: left;
+    margin: 125px 0px 0 225px;
+    font-size: 200px;
 }
 
 #login {
@@ -17,8 +27,9 @@ h1 {
     flex-direction: column;
     flex-wrap: wrap;
     width: 375px;
-    height: 375px;
-    margin: 0 auto;
+    height: 425px;
+    margin: -175px 0px 0px 100px;
+    border-radius: 10px;
 }
 
 #loginForms {
@@ -30,32 +41,67 @@ h1 {
 
 .loginHead {
     text-align: center;
-    margin: 5px auto;
+    font-size: 45px;
+    margin: 45px 0px 20px 0px;
+    letter-spacing: 1px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+    color:#fefefc;
 }
 
 input {
     width: 325px;
     height: 25px;
-    margin: 15px auto;
+    margin: 25px auto;
     border: none;
     outline: none;
-    border-bottom: black 1px solid;
+    border-bottom:#fefefc 1px solid;
+    transition: border-bottom-color 0.2s ease;
+    font-size: 16px;
+    background-color: #37313b;
+    color: #fefefc;
 }
 
-.over {
+label {
     position: relative;
-    bottom: 40px;
+    bottom: 47px;
     left: 1px;
     pointer-events: none;
     transition: all 0.2s ease;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bolder; 
+    color: #fefefc;
 }
-
 
 input:focus + label,
 input:valid + label {
-    transform: translateY(-20px);
+    transform: translateY(-24px);
+    font-size: 15px;
+    color: #56d68c;
 }
 
+input:focus, input:valid {
+    border-bottom-color:#56d68c; 
+}
+
+
+button {
+    margin: 0px 0px 10px 0px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    border:none;
+    background: linear-gradient(257deg, rgba(75,215,134,1) 0%, rgba(86,214,124,1) 77%, rgba(86,214,101,1) 100%);
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}
 
 
 
