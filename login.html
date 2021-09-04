@@ -6,19 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>
-        Contact Manager
+        Contact
     </h1>
-    <div class="loginHead">Login</div>
+    <h2>
+        Manager
+    </h2>
         <div id="login">
             <form id="loginForms">
-                <input class="input" type="text" id="uname" name="uname" type="text" required>
+                <div class="loginHead">Login</div>
+                <input class="input" type="text" name="uname" autocomplete="off" type="text" required>
                 <label class="over" for="uname">Username</label>
-                <input class="input" type="text" id="pass" name="pass" type="text" required>
+                <input class="input" type="text" name="pass" autocomplete="off" type="text" required>
                 <label class="over" for="pass">Password</label>
-                <button>Submit</button>
+                <button>Login</button>
+                <button>Register</button>
             </form>
         </div>
     </div>
