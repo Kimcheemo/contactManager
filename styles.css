@@ -5,3 +5,11 @@
 .container {
 	margin: 10px 20%;
 }
+
+.add-button {
+    margin-left: 10px; 
+}
+
+.form-control {
+    margin: 10px;
+}
