@@ -1,0 +1,13 @@
+.card {
+
+}
+
+.container {
+	margin: 10px 20%;
+}
+
+.button-container {
+	direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
