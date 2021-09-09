@@ -21,3 +21,15 @@
     margin: 10px;
 
 }
+
+.letters {
+	background-color:rgb(198, 200, 202);
+	margin: 10px 13%;
+}
+
+.letter {
+	margin-left: 7%;
+	font-weight: bold;
+}
+
+
