@@ -1,16 +1,6 @@
-.card {
-
-}
 
 .container {
 	margin: 10px 20%;
-}
-
-
-.button-container {
-	direction: row;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .add-button {
@@ -19,7 +9,6 @@
 
 .form-control {
     margin: 10px;
-
 }
 
 .letters {
@@ -32,4 +21,8 @@
 	font-weight: bold;
 }
 
-
+.card-body {
+  direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
