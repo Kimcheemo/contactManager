@@ -26,15 +26,18 @@
 		<p class="letter">A</p>
 	</div>
 
+	<!-- Contact card -->
 	<div class="card container">
 		<div class="card-body">
+			<div></div>
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
-			<a href="#" data-toggle="modal" data-target="#viewContact">Contact_name</a>
+			<a href="#" data-toggle="modal" data-target="#viewContact" style="color: inherit; "class="stretched-link">Contact_name</a>
 			<span class="d-inline float-right">
 				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
 			</span>	
 		</div>
 	</div>
+
 
 	<div class="card container">
 		<div class="card-body">
@@ -93,7 +96,6 @@
 	</div>
 
  
-	<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#viewContact">
   
 	<!-- Modal: add contact -->
 	<form>
@@ -111,7 +113,7 @@
 				</div>
 
 				<div class="modal-body">
-					<div class="">
+					<div>
 						<div class="row align-items-center">
 							<div class="col-auto">
 								<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
@@ -147,28 +149,36 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 							
-							<h5 class="modal-title mx-auto" id="viewContactTitle">Contact_name</h5>
-							<button>Done</button>
+						
+							<button>Edit</button>
 						</div>
 		
 						<div class="modal-body">
-							<div class="">
+							<div>
 								<div class="row align-items-center">
 									<div class="col-auto">
 										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
 									</div>
 									<div class="col">
-										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
-										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
-										<input type="text" class="form-control w-75 mb-5" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
+										Contact_name
+										<br>
+										Company
 									</div>
 								</div>
 							</div>
-							<div class="inputs">
-								<input type="phone" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
-								<input type="email" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
-								<input type="text" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
-								
+							<div class="ml-3">
+								<div class="d-flex align-items-center mt-3">
+									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px" >
+									Phone
+								</div>
+								<div class="d-flex align-items-center">
+									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px" >
+									Mail
+								</div>
+								<div class="d-flex align-items-center">
+									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px" >
+									Address
+								</div>
 							</div>
 						</div>
 					</form>
