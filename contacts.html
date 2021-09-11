@@ -44,7 +44,15 @@
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
 			Contact_name
 			<span class="d-inline float-right">
-				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
+				<div class="dropdown">
+					<a href="#" id="imageDropdown" data-toggle="dropdown">
+						<img src="images/ellipsis.png" width="30px" height="30px">
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
+						<li role="presentation"><a class="ml-3" role="menuitem" tabindex="-1" href="#">Edit</a></li>
+						<li role="presentation"><a class="ml-3" style="color: red;" role="menuitem" tabindex="-1" href="#">Delete</a></li>
+					</ul>
+				</div>
 			</span>	
 		</div>
 	</div>
@@ -72,10 +80,19 @@
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
 			Contact_name
 			<span class="d-inline float-right">
-				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
+				<div class="dropdown">
+					<a href="#" id="imageDropdown" data-toggle="dropdown">
+						<img src="images/ellipsis.png" width="30px" height="30px">
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+					</ul>
+				</div>
 			</span>	
 		</div>
 	</div>
+
 	<div class="card container">
 		<div class="card-body">
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
@@ -98,7 +115,7 @@
  
   
 	<!-- Modal: add contact -->
-	<form>
+<form>
 	<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -108,7 +125,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h5 class="modal-title mx-auto" id="addContactTitle">New Contact</h5>
-					<button type="button" class="btn btn-secondary">Done</button>
+					<button type="submit" name="submit" class="btn btn-secondary">Done</button>
 				</div>
 
 				<div class="modal-body">
@@ -128,13 +145,12 @@
 						<input type="phone" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
 						<input type="email" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
 						<input type="text" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
-						
 					</div>
 				</div>
-			</form>
 			</div>
 		</div>
 	</div>
+</form>
 
 
 		<!-- Modal: view contact -->
