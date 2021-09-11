@@ -18,7 +18,7 @@
           <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
-        <input type="image" class="add-button" src="images/add.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
+        <input type="image" class="add-button" src="images/add.png" width="30px" height="30px" data-toggle="modal" data-target="#addContact">
     </nav>
 
 
@@ -29,7 +29,7 @@
 	<div class="card container">
 		<div class="card-body">
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
-			Contact_name
+			<a href="#" data-toggle="modal" data-target="#viewContact">Contact_name</a>
 			<span class="d-inline float-right">
 				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
 			</span>	
@@ -93,20 +93,24 @@
 	</div>
 
  
-
+	<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#viewContact">
   
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<!-- Modal: add contact -->
+	<form>
+	<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
+
 				<div class="modal-header">
-					<h5 class="modal-title mx-auto" id="exampleModalLongTitle">New Contact</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
 						<span aria-hidden="true">&times;</span>
 					</button>
+					
+					<h5 class="modal-title mx-auto" id="addContactTitle">New Contact</h5>
+					<button>Done</button>
 				</div>
-				<div class="modal-body">
 
+				<div class="modal-body">
 					<div class="">
 						<div class="row align-items-center">
 							<div class="col-auto">
@@ -115,20 +119,62 @@
 							<div class="col">
 								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
 								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
-								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
+								<input type="text" class="form-control w-75 mb-5" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
 							</div>
 						</div>
 					</div>
-					<div>
-						<input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
-						<input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
-						<input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
+					<div class="inputs">
+						<input type="phone" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
+						<input type="email" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
+						<input type="text" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
+						
 					</div>
 				</div>
+			</form>
 			</div>
 		</div>
 	</div>
 
+
+		<!-- Modal: view contact -->
+		<form>
+			<div class="modal fade" id="viewContact" tabindex="-1" role="dialog" aria-labelledby="viewContactTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+		
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							
+							<h5 class="modal-title mx-auto" id="viewContactTitle">Contact_name</h5>
+							<button>Done</button>
+						</div>
+		
+						<div class="modal-body">
+							<div class="">
+								<div class="row align-items-center">
+									<div class="col-auto">
+										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+									</div>
+									<div class="col">
+										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
+										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
+										<input type="text" class="form-control w-75 mb-5" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
+									</div>
+								</div>
+							</div>
+							<div class="inputs">
+								<input type="phone" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
+								<input type="email" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
+								<input type="text" class="form-control w-75 mb-4" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
+								
+							</div>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
 
 	<!-- javascript bootstrap -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
