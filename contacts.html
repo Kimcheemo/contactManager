@@ -5,9 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<!-- <script src="script.js" defer></script> -->
+	<script src="homePageJS.js" defer></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="editForm.css">
 </head>
 <body>
 
@@ -22,20 +23,28 @@
     </nav>
 
 
-	<div class="letters">
+	<!-- <div class="letters">
 		<p class="letter">A</p>
-	</div>
+	</div> -->
 
 	<!-- Contact card -->
-	<div class="card card-container">
+	<!-- <div class="card card-container">
 		<div class="card-body">
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
 			<a href="#" data-toggle="modal" data-target="#viewContact" style="color: inherit; "class="stretched-link">Contact_name</a>
 			<span class="d-inline float-right">
-				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter" style="position: relative;">
+				<div class="dropdown">
+					<a href="#" id="imageDropdown" data-toggle="dropdown">
+						<img src="images/ellipsis.png" width="30px" height="30px">
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
+						<li data-toggle="modal" data-target="#editContact" role="presentation"><a class="ml-3" role="menuitem" tabindex="-1" href="#">Edit</a></li>
+						<li data-toggle="modal" data-target="#deleteContact" role="presentation"><a class="ml-3" style="color: red;" role="menuitem" tabindex="-1" href="#">Delete</a></li>
+					</ul>
+				</div>
 			</span>	
 		</div>
-	</div>
+	</div> -->
 
 	<!-- <div class="card" style="width: 18rem;">
 		<img src="..." class="card-img-top" alt="...">
@@ -52,7 +61,7 @@
 	  </div> -->
 
 
-	<div class="card card-container">
+	<!-- <div class="card card-container">
 		<div class="card-body">
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
 			Contact_name
@@ -68,12 +77,16 @@
 				</div>
 			</span>	
 		</div>
+	</div> -->
+
+	<div id="card-container">
+		
 	</div>
 
 
-	<div class="letters">
+	<!-- <div class="letters">
 		<p class="letter">B</p>
-	</div>
+	</div> -->
 	<div class="card card-container">
 		<div class="card-body">
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
@@ -85,10 +98,10 @@
 	</div>
 
 
-	<div class="letters">
+	<!-- <div class="letters">
 		<p class="letter">C</p>
-	</div>
-	<div class="card card-container">
+	</div> -->
+	<!-- <div class="card card-container">
 		<div class="card-body">
 			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
 			Contact_name
@@ -123,12 +136,39 @@
 				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
 			</span>	
 		</div>
-	</div>
+	</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+	<div class="container">
+		<form class="is-readonly">
+		  <div class="form-group">
+			<label for="exampleInputPassword1">Full Name</label>
+			<input type="text" class="form-control is-disabled" id="exampleInputPassword1" placeholder="Name" value="Jon Stewart" disabled>
+		  </div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" class="form-control is-disabled" id="exampleInputEmail1" placeholder="Email" value="MyEmail@MyDowmain.Com" disabled>
+		  </div>
+		  <button type="button" class="btn btn-default btn-edit js-edit">Edit</button>
+		  <button type="button" class="btn btn-default btn-save js-save">Save</button>
+		</form>
+		
+		</div> -->
 
  
   
 	<!-- Modal: add contact -->
-<form>
+<form action="#">
 	<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -228,16 +268,15 @@
 
 
 		<!-- Modal: Edit Contact -->
-		<form>
+		<form class="is-readonly">
+			<div class="form-group">
 			<div class="modal fade" id="editContact" tabindex="-1" role="dialog" aria-labelledby="viewContactTitle" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
-		
+						
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
-								<span aria-hidden="true">&times;</span>
-							</button>
-							<button type="button" class="btn btn-secondary">Edit</button>
+							<button type="button" class="btn btn-secondary btn-save js-edit">Save changes</button>
+							<button type="button" class="btn btn-secondary btn-edit js-edit">Edit</button>
 						</div>
 		
 						<div class="modal-body">
@@ -247,32 +286,33 @@
 										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
 									</div>
 									<div class="col">
-										Contact_name
-										<br>
-										Company
+										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name" disabled>
+										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name" disabled>
+										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company" disabled>
 									</div>
 								</div>
 							</div>
 							<div class="ml-3">
 								<div class="d-flex align-items-center mt-3">
 									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px" >
-									Phone
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone" disabled>
 								</div>
 								<div class="d-flex align-items-center">
 									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px" >
-									Mail
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email" disabled>
 								</div>
 								<div class="d-flex align-items-center">
 									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px" >
-									Address
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address" disabled>
 								</div>
 							</div>
 						</div>
-					</form>
+					
 					</div>
 				</div>
 			</div>
-
+		</div>
+		</form>
 
 
 			<!-- Modal: Delete Contact -->
