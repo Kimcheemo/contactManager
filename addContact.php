@@ -1,28 +1,24 @@
 <?php
 	$inData = getRequestInfo();
+	
+	$first = $inData["FirstName"];
+	$last = $inData["LastName"];
+    $phone = $inData["PhoneNumber"];
+    $email = $inData["Email"];
+    $address = $inData["Address"];
+    $company = $inData["Company"];
+    $userID = $inData["UserId"];
 
-    //variables
-    $firstName = "";
-    $lastName = "";
-    $phoneNumber = "";
-    $email = "";
-    $address = "";
-    $company = "";
-    $userID = 0;
-    
-    //added our username, password, and database name
-    
-	$conn = new mysqli("localhost", "ubuntu", "password", "COP4331");
+
+	$conn = new mysqli("localhost", "root", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-        //include 5 ?'s for the values and changed INSERT into "Contact" and added FN, LN, PH, and email to ()
-		$stmt = $conn->prepare("INSERT into Contact (firstName, lastName, phoneNumber, email, address, company) VALUES(?,?,?,?,?,?)");
-        //changed the bind_param to include new variables
-		$stmt->bind_param("sssiss", $_POST["firstName"], $_POST["lastName"], $_POST["phoneNumber",], $_POST["email"], $_POST["address"],$_POST["company"]);
+		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, PhoneNumber, Email, Address, Company) VALUES('$first', '$last', '$phone', '$email', '$address', '$company', '$userID')");
+		mysqli_query($conn, $stmt);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
