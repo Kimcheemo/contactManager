@@ -5,88 +5,340 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<!-- <script src="script.js" defer></script> -->
+	<script src="homePageJS.js" defer></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="editForm.css">
 </head>
 <body>
 
 	<!-- navbar and add -->
     <nav class="navbar navbar-light bg-light justify-content-center">
-        <a class="navbar-brand">Navbar</a>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          
+        <a class="navbar-brand">ConTacked</a>
+        <form class="form-inline w-50">
+          <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
-        <input type="image" class="add-button" src="images/add.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
-      </nav>
-
-</nav>
+        <input type="image" class="add-button" src="images/add.png" width="30px" height="30px" data-toggle="modal" data-target="#addContact">
+    </nav>
 
 
-  <div class="card container">
-    <div class="card-body">
-        <img src="images/icon.png" width="30px" height="30px">
-      Contact_name
-      <input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
-    </div>
-  </div>
+	<!-- <div class="letters">
+		<p class="letter">A</p>
+	</div> -->
 
-  <div class="card container">
-    <div class="card-body">
-        <img src="images/icon.png" width="30px" height="30px">
-      Contact_name
-      <img src="images/ellipsis.png" width="30px" height="30px">
-    </div>
-  </div>
-
-
-
-
-
-<div class="container">
-	<div class="card">
-		<h5 class="card-header">Contact_name</h5>
+	<!-- Contact card -->
+	<!-- <div class="card card-container">
 		<div class="card-body">
-		  <!-- <h5 class="card-title">Special title treatment</h5> -->
-		  <p class="card-text">contact_ Phone	contact_email</p>
-	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-	Edit Contact
-  </button>
+			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
+			<a href="#" data-toggle="modal" data-target="#viewContact" style="color: inherit; "class="stretched-link">Contact_name</a>
+			<span class="d-inline float-right">
+				<div class="dropdown">
+					<a href="#" id="imageDropdown" data-toggle="dropdown">
+						<img src="images/ellipsis.png" width="30px" height="30px">
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
+						<li data-toggle="modal" data-target="#editContact" role="presentation"><a class="ml-3" role="menuitem" tabindex="-1" href="#">Edit</a></li>
+						<li data-toggle="modal" data-target="#deleteContact" role="presentation"><a class="ml-3" style="color: red;" role="menuitem" tabindex="-1" href="#">Delete</a></li>
+					</ul>
+				</div>
+			</span>	
 		</div>
-	  </div>
+	</div> -->
+
+	<!-- <div class="card" style="width: 18rem;">
+		<img src="..." class="card-img-top" alt="...">
+		<div class="card-body">
+		  <h5 class="card-title">Card with stretched links</h5>
+		  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  <p class="card-text">
+			<a href="#" class="stretched-link text-danger" style="position: relative;">Stretched link will not work here, because <code>position: relative</code> is added to the link</a>
+		  </p>
+		  <p class="card-text bg-light" style="transform: rotate(0);">
+			This <a href="#" class="text-warning stretched-link">stretched link</a> will only be spread over the <code>p</code>-tag, because a transform is applied to it.
+		  </p>
+		</div>
+	  </div> -->
+
+
+	<!-- <div class="card card-container">
+		<div class="card-body">
+			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
+			Contact_name
+			<span class="d-inline float-right">
+				<div class="dropdown">
+					<a href="#" id="imageDropdown" data-toggle="dropdown">
+						<img src="images/ellipsis.png" width="30px" height="30px">
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
+						<li data-toggle="modal" data-target="#editContact" role="presentation"><a class="ml-3" role="menuitem" tabindex="-1" href="#">Edit</a></li>
+						<li data-toggle="modal" data-target="#deleteContact" role="presentation"><a class="ml-3" style="color: red;" role="menuitem" tabindex="-1" href="#">Delete</a></li>
+					</ul>
+				</div>
+			</span>	
+		</div>
+	</div> -->
+
+	<div id="card-container">
+		
 	</div>
 
 
-  
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLongTitle">New Contact</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
+	<!-- <div class="letters">
+		<p class="letter">B</p>
+	</div> -->
+	<div class="card card-container">
+		<div class="card-body">
+			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
+			Contact_name
+			<span class="d-inline float-right">
+				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
+			</span>	
 		</div>
-		<div class="modal-body">
-            <div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
-            </div>
-            <div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
+	</div>
 
-        </div>
 
+	<!-- <div class="letters">
+		<p class="letter">C</p>
+	</div> -->
+	<!-- <div class="card card-container">
+		<div class="card-body">
+			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
+			Contact_name
+			<span class="d-inline float-right">
+				<div class="dropdown">
+					<a href="#" id="imageDropdown" data-toggle="dropdown">
+						<img src="images/ellipsis.png" width="30px" height="30px">
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+					</ul>
+				</div>
+			</span>	
+		</div>
+	</div>
+
+	<div class="card card-container">
+		<div class="card-body">
+			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
+			Contact_name
+			<span class="d-inline float-right">
+				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
+			</span>	
+		</div>
+	</div>
+	<div class="card card-container">
+		<div class="card-body">
+			<img class="mr-4" src="images/icon.png" width="30px" height="30px" >
+			Contact_name
+			<span class="d-inline float-right">
+				<input type="image" src="images/ellipsis.png" width="30px" height="30px" data-toggle="modal" data-target="#exampleModalCenter">
+			</span>	
+		</div>
+	</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+	<div class="container">
+		<form class="is-readonly">
+		  <div class="form-group">
+			<label for="exampleInputPassword1">Full Name</label>
+			<input type="text" class="form-control is-disabled" id="exampleInputPassword1" placeholder="Name" value="Jon Stewart" disabled>
+		  </div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" class="form-control is-disabled" id="exampleInputEmail1" placeholder="Email" value="MyEmail@MyDowmain.Com" disabled>
+		  </div>
+		  <button type="button" class="btn btn-default btn-edit js-edit">Edit</button>
+		  <button type="button" class="btn btn-default btn-save js-save">Save</button>
+		</form>
+		
+		</div> -->
+
+ 
+  
+	<!-- Modal: add contact -->
+<form action="#">
+	<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h5 class="modal-title mx-auto" id="addContactTitle">New Contact</h5>
+					<button type="submit" name="submit" class="btn btn-secondary">Done</button>
+				</div>
+
+				<div class="modal-body">
+					<div>
+						<div class="row align-items-center">
+							<div class="col-auto">
+								<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+							</div>
+							<div class="col">
+								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
+								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
+								<input type="text" class="form-control w-75 mb-5" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
+							</div>
+						</div>
+					</div>
+					<div>	
+						<div class="ml-3">
+							<div class="d-flex align-items-center">
+								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px" >
+								<input type="phone" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
+							</div>
+							<div class="d-flex align-items-center">
+								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px" >
+								<input type="email" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
+
+							</div>
+							<div class="d-flex align-items-center">
+								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px" >
+								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
+
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+		<!-- Modal: view contact -->
+		<form>
+			<div class="modal fade" id="viewContact" tabindex="-1" role="dialog" aria-labelledby="viewContactTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+		
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<button type="button" class="btn btn-secondary">Edit</button>
+						</div>
+		
+						<div class="modal-body">
+							<div>
+								<div class="row align-items-center">
+									<div class="col-auto">
+										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+									</div>
+									<div class="col">
+										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
+										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
+										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
+									</div>
+								</div>
+							</div>
+							<div class="ml-3">
+								<div class="d-flex align-items-center mt-3">
+									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px" >
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
+								</div>
+								<div class="d-flex align-items-center">
+									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px" >
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
+								</div>
+								<div class="d-flex align-items-center">
+									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px" >
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
+								</div>
+							</div>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+
+
+
+		<!-- Modal: Edit Contact -->
+		<form class="is-readonly">
+			<div class="form-group">
+			<div class="modal fade" id="editContact" tabindex="-1" role="dialog" aria-labelledby="viewContactTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						
+						<div class="modal-header">
+							<button type="button" class="btn btn-secondary btn-save js-edit">Save changes</button>
+							<button type="button" class="btn btn-secondary btn-edit js-edit">Edit</button>
+						</div>
+		
+						<div class="modal-body">
+							<div>
+								<div class="row align-items-center">
+									<div class="col-auto">
+										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+									</div>
+									<div class="col">
+										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name" disabled>
+										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name" disabled>
+										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company" disabled>
+									</div>
+								</div>
+							</div>
+							<div class="ml-3">
+								<div class="d-flex align-items-center mt-3">
+									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px" >
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone" disabled>
+								</div>
+								<div class="d-flex align-items-center">
+									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px" >
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email" disabled>
+								</div>
+								<div class="d-flex align-items-center">
+									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px" >
+									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address" disabled>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+
+
+			<!-- Modal: Delete Contact -->
+			<div class="modal fade" id="deleteContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+				  <div class="modal-content">
+					<div class="modal-body mt-5 mb-3">
+					  <div class="d-flex justify-content-center mb-2">Do you want to delete  &nbsp; <b>Contact_name</b> </div>
+					  <div class="d-flex justify-content-center"> from your contacts?</div>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					  <button type="button" class="btn btn-danger">Delete</button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+
+
+
+
+
+	<!-- javascript bootstrap -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>
