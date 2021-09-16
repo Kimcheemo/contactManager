@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="homePageJS.js" defer></script>
+	<script src="cookies.js" defer></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="editForm.css">
@@ -83,7 +84,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h5 class="modal-title mx-auto" id="addContactTitle">New Contact</h5>
-					<button type="submit" name="submit" class="btn btn-secondary">Done</button>
+					<button type="submit" name="submit" class="btn btn-secondary" onclick="addContact();">Done</button>
 				</div>
 
 				<div class="modal-body">
@@ -93,7 +94,7 @@
 								<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
 							</div>
 							<div class="col">
-								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
+								<input id="first" type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
 								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name">
 								<input type="text" class="form-control w-75 mb-5" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company">
 							</div>
@@ -115,6 +116,7 @@
 								<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
 
 							</div>
+							<span id="contactAddResult"></span>
 						</div>
 					
 					</div>

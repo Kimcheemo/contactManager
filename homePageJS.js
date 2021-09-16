@@ -104,6 +104,7 @@ function createContactCard(contact){
 	let imgDot = document.createElement("img");
 	imgDot.src = "images/ellipsis.png";
 	imgDot.style.width = "30px";
+	imgDot.style.cursor = "pointer";
 	anchor.appendChild(imgDot);
 
 	let dropdownlist = document.createElement("ul");
@@ -123,6 +124,7 @@ function createContactCard(contact){
 	item1.setAttribute("role", "menuitem" );
 	item1.setAttribute("tabindex", "-1" );
 	item1.innerText = "Edit";
+	item1.style.cursor = "pointer";
 	list1.appendChild(item1);
 
 	let list2 = document.createElement("li");
@@ -137,6 +139,54 @@ function createContactCard(contact){
 	item2.setAttribute("tabindex", "-1" );
 	item2.innerText = "Delete";
 	item2.style.color = "red";
+	item2.style.cursor = "pointer";
 	list2.appendChild(item2);
 
+}
+
+
+function addContact()
+{
+	////////////////////////////////////////////////////////////////////////////////////////////
+	var minutes = 20;
+	var date = new Date();
+	date.setTime(date.getTime()+(minutes*60*1000));	
+	document.cookie = "firstName=test,lastName=test,userId=1;expires=" + date.toGMTString();
+	////////////////////////////////////////////////////////////////////////////////////////////
+	
+	var userData = getCookieData();
+	userId = userData.userId;
+	var newFirst = document.getElementById("first").value;
+	// var newLast = document.getElementById("last").value;
+	// var newCompany = document.getElementById("company").value;
+	// var newPhone = document.getElementById("phone").value;
+	// var newEmail = document.getElementById("email").value;
+	// var newAddress = document.getElementById("address").value;
+
+	document.getElementById("contactAddResult").innerHTML = "";
+
+	var tmp = {color:newFirst,userId,userId};
+	var jsonPayload = JSON.stringify( tmp );
+
+	var url = urlBase + '/addContact.' + extension;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added!";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
+	
 }
