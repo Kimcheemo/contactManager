@@ -75,47 +75,68 @@ function createContactCard(contact){
   	card.className = "card";
   	cardContainer.appendChild(card);
 
+	let cardBody = document.createElement("div");
+  	cardBody.className = "card-body";
+  	card.appendChild(cardBody);
+	
+	let left = document.createElement("div");
+	left.innerHTML = contact.name;
+	cardBody.appendChild(left);
+
 	let img = document.createElement("img");
 	img.src = "images/icon.png";
 	img.style.width = "30px";
 	img.style.margin = "20px";
-	card.appendChild(img);
+	left.insertAdjacentElement('afterbegin', img);
 
-	let cardBody = document.createElement("span");
-	cardBody.innerHTML = contact.name;
-  	cardBody.className = "card-body";
-  	card.appendChild(cardBody);
-	
+	let span = document.createElement("span");
+	cardBody.appendChild(span);
+
+	let dots = document.createElement("div");
+	dots.className = "dropdown";
+	span.appendChild(dots);
+
+	let anchor = document.createElement("a");
+	anchor.id = "imageDropdown";
+	anchor.setAttribute("data-toggle", "dropdown" );
+	dots.appendChild(anchor);
+
 	let imgDot = document.createElement("img");
 	imgDot.src = "images/ellipsis.png";
 	imgDot.style.width = "30px";
-	imgDot.style.cssFloat = "right";
-	cardBody.appendChild(imgDot);
+	anchor.appendChild(imgDot);
 
+	let dropdownlist = document.createElement("ul");
+	dropdownlist.className = "dropdown-menu";
+	dropdownlist.setAttribute("role", "menu" );
+	dropdownlist.setAttribute("aria-labelledby", "imageDropdown" );
+	dots.appendChild(dropdownlist);
 
+	let list1 = document.createElement("li");
+	list1.setAttribute("data-toggle", "modal" );
+	list1.setAttribute("data-target", "#editContact" );
+	list1.setAttribute("role", "presentation" );
+	dropdownlist.appendChild(list1);
 
-	// let cardContainer = document.getElementById("card-container");
-	
-	// let card = document.createElement("div");
-  	// card.className = "card";
-  	// cardContainer.appendChild(card);
+	let item1 = document.createElement("a");
+	item1.className = "ml-3";
+	item1.setAttribute("role", "menuitem" );
+	item1.setAttribute("tabindex", "-1" );
+	item1.innerText = "Edit";
+	list1.appendChild(item1);
 
-	// let img = document.createElement("img");
-	// img.src = "images/icon.png";
-	// img.style.width = "30px";
-	// img.style.margin = "20px";
-	// let para = document.createElement("P");
-	// para.innerText = contact.name;
-	
-	// img.appendChild(para);
-	// card.appendChild(img);
+	let list2 = document.createElement("li");
+	list2.setAttribute("data-toggle", "modal" );
+	list2.setAttribute("data-target", "#deleteContact" );
+	list2.setAttribute("role", "presentation" );
+	dropdownlist.appendChild(list2);
 
-	
-
-
-	
-	
-	
-
+	let item2 = document.createElement("a");
+	item2.className = "ml-3";
+	item2.setAttribute("role", "menuitem" );
+	item2.setAttribute("tabindex", "-1" );
+	item2.innerText = "Delete";
+	item2.style.color = "red";
+	list2.appendChild(item2);
 
 }
