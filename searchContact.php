@@ -5,20 +5,16 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-    //added our username, password, and database name
-	$conn = new mysqli("localhost", "login", "password", "COP4331");
+	$conn = new mysqli("localhost", "root", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-        //changed select name from "Color" to "Contect"
-		$stmt = $conn->prepare("select Name from Contact where Name like ? and UserID=?");
-        
-        //chagned to $inData[FN], [LN]
-		$userName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sss", $inData[firstName], $inData[lastName], $inData["userID"]);
+		$stmt = $conn->prepare("select FirstName from Contacts where FirstName like ? and UserID=?");
+		$fName = "%" . $inData["search"] . "%";
+		$stmt->bind_param("ss", $fName, $inData["UserID"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -30,14 +26,12 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-            
-            //changed to firstName and lastName and userID print out
-			$searchResults .= '"' . $row["userID"] . '"''"' . $row["firstName"] . '"''"' . $row["lastName"] . '"';
+			$searchResults .= '"' . $row["FirstName"] . '"';
 		}
 		
 		if( $searchCount == 0 )
 		{
-			returnWithError( "No Records Found" );
+			returnWithError( "There are no results matching your search!" );
 		}
 		else
 		{
@@ -61,7 +55,7 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"userID":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"ID":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
