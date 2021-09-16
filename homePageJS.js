@@ -65,6 +65,75 @@ function populateContacts(){
 //   xhr.send(data);
 // }
 
+function saveCookie()
+{
+	var minutes = 20;
+	var date = new Date();
+	date.setTime(date.getTime()+(minutes*60*1000));	
+	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+}
+
+function readCookie()
+{
+	userId = -1;
+	var data = document.cookie;
+	var splits = data.split(",");
+	for(var i = 0; i < splits.length; i++) 
+	{
+		var thisOne = splits[i].trim();
+		var tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1];
+		}
+		else if( tokens[0] == "lastName" )
+		{
+			lastName = tokens[1];
+		}
+		else if( tokens[0] == "userId" )
+		{
+			userId = parseInt( tokens[1].trim() );
+		}
+	}
+	
+	if( userId < 0 )
+	{
+		window.location.href = "index.html";
+	}
+	else
+	{
+		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+	}
+}
+
+function getCookieData(){
+	userId = -1;
+	var data = document.cookie;
+	var splits = data.split(",");
+	for(var i = 0; i < splits.length; i++) 
+	{
+		var thisOne = splits[i].trim();
+		var tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1];
+		}
+		else if( tokens[0] == "lastName" )
+		{
+			lastName = tokens[1];
+		}
+		else if( tokens[0] == "userId" )
+		{
+			userId = parseInt( tokens[1].trim() );
+		}
+	}
+	
+	return {
+		userId : userId,
+		firstName : firstName,
+		lastName : lastName
+	};
+}
 
 
 
@@ -148,27 +217,30 @@ function createContactCard(contact){
 function addContact()
 {
 	////////////////////////////////////////////////////////////////////////////////////////////
-	var minutes = 20;
-	var date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=test,lastName=test,userId=1;expires=" + date.toGMTString();
-	////////////////////////////////////////////////////////////////////////////////////////////
+	// var minutes = 20;
+	// var date = new Date();
+	// date.setTime(date.getTime()+(minutes*60*1000));	
+	// document.cookie = "firstName=test,lastName=test,userId=1;expires=" + date.toGMTString();
+	// ////////////////////////////////////////////////////////////////////////////////////////////
 	
 	var userData = getCookieData();
 	userId = userData.userId;
+
+
+
 	var newFirst = document.getElementById("first").value;
-	// var newLast = document.getElementById("last").value;
-	// var newCompany = document.getElementById("company").value;
-	// var newPhone = document.getElementById("phone").value;
-	// var newEmail = document.getElementById("email").value;
-	// var newAddress = document.getElementById("address").value;
+	var newLast = document.getElementById("last").value;
+	var newCompany = document.getElementById("company").value;
+	var newPhone = document.getElementById("phone").value;
+	var newEmail = document.getElementById("email").value;
+	var newAddress = document.getElementById("address").value;
 
 	document.getElementById("contactAddResult").innerHTML = "";
 
-	var tmp = {color:newFirst,userId,userId};
+	var tmp = {FirstName:newFirst,LastName:newLast,PhoneNumber:newPhone,Email:newEmail,Address:newAddress,Company:newCompany,UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/addContact.' + extension;
+	var url = '/addContact.php';
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
