@@ -145,8 +145,17 @@ function createContactCard(contact){
 }
 
 
-function addColor()
+function addContact()
 {
+	////////////////////////////////////////////////////////////////////////////////////////////
+	var minutes = 20;
+	var date = new Date();
+	date.setTime(date.getTime()+(minutes*60*1000));	
+	document.cookie = "firstName=test,lastName=test,userId=1;expires=" + date.toGMTString();
+	////////////////////////////////////////////////////////////////////////////////////////////
+	
+	var userData = getCookieData();
+	userId = userData.userId;
 	var newFirst = document.getElementById("first").value;
 	// var newLast = document.getElementById("last").value;
 	// var newCompany = document.getElementById("company").value;
