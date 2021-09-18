@@ -134,83 +134,84 @@ $(function () {
 // 	return userId;
 // }
 
-function createContactCard(firstName, lastName){
-	let cardContainer = document.getElementById("card-container");
+// function createContactCard(firstName, lastName){
+// 	let cardContainer = document.getElementById("card-container");
 	
-	let card = document.createElement("div");
-  	card.className = "card";
-  	cardContainer.appendChild(card);
+// 	let card = document.createElement("div");
+//   	card.className = "card";
+//   	cardContainer.appendChild(card);
 
-	let cardBody = document.createElement("div");
-  	cardBody.className = "card-body";
-  	card.appendChild(cardBody);
+// 	let cardBody = document.createElement("div");
+//   	cardBody.className = "card-body";
+//   	card.appendChild(cardBody);
 	
-	let left = document.createElement("div");
-	left.innerHTML = firstName + lastName;
-	cardBody.appendChild(left);
+// 	let left = document.createElement("div");
+// 	left.innerHTML = firstName + lastName;
+// 	cardBody.appendChild(left);
 
-	let img = document.createElement("img");
-	img.src = "images/icon.png";
-	img.style.width = "30px";
-	img.style.margin = "20px";
-	left.insertAdjacentElement('afterbegin', img);
+// 	let img = document.createElement("img");
+// 	img.src = "images/icon.png";
+// 	img.style.width = "30px";
+// 	img.style.margin = "20px";
+// 	left.insertAdjacentElement('afterbegin', img);
 
-	let span = document.createElement("span");
-	cardBody.appendChild(span);
+// 	let span = document.createElement("span");
+// 	cardBody.appendChild(span);
 
-	let dots = document.createElement("div");
-	dots.className = "dropdown";
-	span.appendChild(dots);
+// 	let dots = document.createElement("div");
+// 	dots.className = "dropdown";
+// 	span.appendChild(dots);
 
-	let anchor = document.createElement("a");
-	anchor.id = "imageDropdown";
-	anchor.setAttribute("data-toggle", "dropdown" );
-	anchor.addEventListener('click', getContactID);
-	dots.appendChild(anchor);
+// 	let anchor = document.createElement("a");
+// 	anchor.id = "imageDropdown";
+// 	anchor.setAttribute("data-toggle", "dropdown" );
+// 	anchor.addEventListener('click', getContactID);
+// 	dots.appendChild(anchor);
 
-	let imgDot = document.createElement("img");
-	imgDot.src = "images/ellipsis.png";
-	imgDot.style.width = "30px";
-	imgDot.style.cursor = "pointer";
-	anchor.appendChild(imgDot);
+// 	let imgDot = document.createElement("img");
+// 	imgDot.src = "images/ellipsis.png";
+// 	imgDot.style.width = "30px";
+// 	imgDot.style.cursor = "pointer";
+// 	anchor.appendChild(imgDot);
 
-	let dropdownlist = document.createElement("ul");
-	dropdownlist.className = "dropdown-menu";
-	dropdownlist.setAttribute("role", "menu" );
-	dropdownlist.setAttribute("aria-labelledby", "imageDropdown" );
-	dots.appendChild(dropdownlist);
+// 	let dropdownlist = document.createElement("ul");
+// 	dropdownlist.className = "dropdown-menu";
+// 	dropdownlist.setAttribute("role", "menu" );
+// 	dropdownlist.setAttribute("aria-labelledby", "imageDropdown" );
+// 	dots.appendChild(dropdownlist);
 
-	let list1 = document.createElement("li");
-	list1.setAttribute("data-toggle", "modal" );
-	list1.setAttribute("data-target", "#editContact" );
-	list1.setAttribute("role", "presentation" );
-	dropdownlist.appendChild(list1);
+// 	let list1 = document.createElement("li");
+// 	list1.setAttribute("data-toggle", "modal" );
+// 	list1.setAttribute("data-target", "#editContact" );
+// 	list1.setAttribute("role", "presentation" );
+// 	dropdownlist.appendChild(list1);
 
-	let item1 = document.createElement("a");
-	item1.className = "ml-3";
-	item1.setAttribute("role", "menuitem" );
-	item1.setAttribute("tabindex", "-1" );
-	item1.innerText = "Edit";
-	item1.addEventListener('click', addID);
-	item1.style.cursor = "pointer";
-	list1.appendChild(item1);
+// 	let item1 = document.createElement("a");
+// 	item1.className = "ml-3";
+// 	item1.setAttribute("role", "menuitem" );
+// 	item1.setAttribute("tabindex", "-1" );
+// 	item1.innerText = "Edit";
+// 	item1.addEventListener('click', addID);
+// 	item1.style.cursor = "pointer";
+// 	list1.appendChild(item1);
 
-	let list2 = document.createElement("li");
-	list2.setAttribute("data-toggle", "modal" );
-	list2.setAttribute("data-target", "#deleteContact" );
-	list2.setAttribute("role", "presentation" );
-	dropdownlist.appendChild(list2);
+// 	let list2 = document.createElement("li");
+// 	list2.setAttribute("data-toggle", "modal" );
+// 	list2.setAttribute("data-target", "#deleteContact" );
+// 	list2.setAttribute("role", "presentation" );
+// 	dropdownlist.appendChild(list2);
 
-	let item2 = document.createElement("a");
-	item2.className = "ml-3";
-	item2.setAttribute("role", "menuitem" );
-	item2.setAttribute("tabindex", "-1" );
-	item2.innerText = "Delete";
-	item2.style.color = "red";
-	item2.style.cursor = "pointer";
-	list2.appendChild(item2);
+// 	let item2 = document.createElement("a");
+// 	item2.className = "ml-3";
+// 	item2.setAttribute("role", "menuitem" );
+// 	item2.setAttribute("tabindex", "-1" );
+// 	item2.addEventListener('click', addID);
+// 	item2.innerText = "Delete";
+// 	item2.style.color = "red";
+// 	item2.style.cursor = "pointer";
+// 	list2.appendChild(item2);
 
-}
+// }
 
 function SearchContactCard(firstName, lastName, ID){
 	let cardContainer = document.getElementById("ContactList");
@@ -239,9 +240,10 @@ function SearchContactCard(firstName, lastName, ID){
 	let dots = document.createElement("div");
 	dots.className = "dropdown";
 	
-	// let IDHolder = document.createElement("p");
-	// IDHolder.innerText = ID;
-	// IDHolder.className = "contactIDselect";
+	let IDHolder = document.createElement("p");
+	IDHolder.innerText = ID;
+	IDHolder.className = "contactIDselect";
+	IDHolder.style.display = "none";
 
 	span.appendChild(dots);
 
@@ -290,6 +292,7 @@ function SearchContactCard(firstName, lastName, ID){
 	item2.className = "ml-3";
 	item2.setAttribute("role", "menuitem" );
 	item2.setAttribute("tabindex", "-1" );
+	item2.addEventListener('click', addID);
 	item2.innerText = "Delete";
 	item2.style.color = "red";
 	item2.style.cursor = "pointer";
