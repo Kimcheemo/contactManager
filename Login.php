@@ -1,13 +1,14 @@
 
+
 <?php
 
 	$inData = getRequestInfo();
 	
-	$userID = 0;
+	$id = 0;
 	$firstName = "";
 	$lastName = "";
 
-	$conn = new mysqli("localhost", "ubuntu", "password", "COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
 	if( $conn->connect_error )
 	{
 		returnWithError( $conn->connect_error );
@@ -21,7 +22,7 @@
 
 		if( $row = $result->fetch_assoc()  )
 		{
-			returnWithInfo( $row['firstName'], $row['lastName'], $row['userID'] );
+			returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
 		}
 		else
 		{
@@ -45,13 +46,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"userID":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	

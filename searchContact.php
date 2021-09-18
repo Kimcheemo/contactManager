@@ -5,28 +5,28 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "root", "WeLoveCOP4331", "COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
-	{
-		returnWithError( $conn->connect_error );
+	{	
+	returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select FirstName from Contacts where FirstName like ? and UserID=?");
+		$stmt = $conn->prepare("select * from Contacts where FirstName like ? and UserID=?");
 		$fName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $fName, $inData["UserID"]);
+		$stmt->bind_param("si", $fName, $inData["UserID"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
 		
 		while($row = $result->fetch_assoc())
 		{
-			if( $searchCount > 0 )
-			{
-				$searchResults .= ",";
-			}
-			$searchCount++;
-			$searchResults .= '"' . $row["FirstName"] . '"';
+		if( $searchCount > 0 )
+		{
+			$searchResults .= ",";
+		}
+		$searchCount++;
+		$searchResults .= '{ "ID":"' . $row["ID"] . '","FirstName":"' . $row["FirstName"] . '","LastName":"' . $row["LastName"] . '","PhoneNumber":"' . $row["PhoneNumber"] . '","Email":"' . $row["Email"] . '","Address":"' . $row["Address"] . '","Company":"' . $row["Company"] . '"}';
 		}
 		
 		if( $searchCount == 0 )

@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script src="homePageJS.js" defer></script>
-	<script src="cookies.js" defer></script>
+	<title>ConTacked</title>
+	<script src="js/homePageJS.js" defer=""></script>
+	<script src="js/cookies.js" defer=""></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="editForm.css">
@@ -16,14 +14,19 @@
 	<!-- navbar and add -->
     <nav class="navbar navbar-light bg-light justify-content-center">
         <a class="navbar-brand">ConTacked</a>
-        <form class="form-inline w-50">
-          <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+        <div class="form-inline w-50">
+          <input class="form-control mr-sm-2 w-100" id="SearchBar" type="search" placeholder="Search" aria-label="Search">
+		  <button onclick="searchContact()">Submit Search</button>
+		  <span id="searchResult"></span>
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-        </form>
+		</div>
         <input type="image" class="add-button" src="images/add.png" width="30px" height="30px" data-toggle="modal" data-target="#addContact">
     </nav>
 
-
+	<h2 id="searchHeader"></h2>
+	<p id="ContactList">
+	</p>
+	
 	<!-- <div class="letters">
 		<p class="letter">A</p>
 	</div> -->
@@ -70,28 +73,27 @@
 	</div> -->
 
 	<div id="card-container">
-
 	</div>
  
   
 	<!-- Modal: add contact -->
-<form action="#">
+<div>
 	<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
-						<span aria-hidden="true">&times;</span>
+						<span aria-hidden="true">×</span>
 					</button>
 					<h5 class="modal-title mx-auto" id="addContactTitle">New Contact</h5>
-					<button type="submit" name="submit" class="btn btn-secondary" onclick="addContact();">Done</button>
+					<button class="btn btn-secondary" onclick="addContact()">Done</button>
 				</div>
 
 				<div class="modal-body">
 					<div>
 						<div class="row align-items-center">
 							<div class="col-auto">
-								<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+								<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px">
 							</div>
 							<div class="col">
 								<input id="first" type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
@@ -103,16 +105,16 @@
 					<div>	
 						<div class="ml-3">
 							<div class="d-flex align-items-center">
-								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px" >
+								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px">
 								<input id="phone" type="phone" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
 							</div>
 							<div class="d-flex align-items-center">
-								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px" >
+								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px">
 								<input id="email" type="email" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
 
 							</div>
 							<div class="d-flex align-items-center">
-								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px" >
+								<img class="mr-4 mt-4 mb-4" src="images/edit.png" width="30px" height="30px">
 								<input id="address" type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
 
 							</div>
@@ -124,7 +126,7 @@
 			</div>
 		</div>
 	</div>
-</form>
+</div>
 
 
 		<!-- Modal: view contact -->
@@ -135,8 +137,9 @@
 		
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0px;">
-								<span aria-hidden="true">&times;</span>
+								<span aria-hidden="true">×</span>
 							</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
 							<button type="button" class="btn btn-secondary">Edit</button>
 						</div>
 		
@@ -144,7 +147,7 @@
 							<div>
 								<div class="row align-items-center">
 									<div class="col-auto">
-										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px">
 									</div>
 									<div class="col">
 										<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name">
@@ -155,23 +158,23 @@
 							</div>
 							<div class="ml-3">
 								<div class="d-flex align-items-center mt-3">
-									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px" >
+									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px">
 									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone">
 								</div>
 								<div class="d-flex align-items-center">
-									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px" >
+									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px">
 									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email">
 								</div>
 								<div class="d-flex align-items-center">
-									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px" >
+									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px">
 									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address">
 								</div>
 							</div>
 						</div>
-					</form>
+					
 					</div>
 				</div>
-			</div>
+			</div></form>
 
 
 
@@ -183,7 +186,8 @@
 					<div class="modal-content">
 						
 						<div class="modal-header">
-							<button type="button" class="btn btn-secondary btn-save js-edit">Save changes</button>
+							<span id="contactEditResult"></span>
+							<button type="button" class="btn btn-secondary btn-save js-edit" onclick="EditContact()">Save changes</button>
 							<button type="button" class="btn btn-secondary btn-edit js-edit">Edit</button>
 						</div>
 		
@@ -191,27 +195,27 @@
 							<div>
 								<div class="row align-items-center">
 									<div class="col-auto">
-										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px" >
+										<img class="align-items-center ml-4" src="images/icon.png" width="80px" height="80px">
 									</div>
 									<div class="col">
-										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name" disabled>
-										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name" disabled>
-										<input type="text" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company" disabled>
+										<input type="text" id="editFirst" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="First name" disabled="">
+										<input type="text" id="editLast" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Last name" disabled="">
+										<input type="text" id="editCompany" class="form-control w-75 is-disabled" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Company" disabled="">
 									</div>
 								</div>
 							</div>
 							<div class="ml-3">
 								<div class="d-flex align-items-center mt-3">
-									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px" >
-									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone" disabled>
+									<img class="mr-4 mt-4 mb-4" src="images/phone.png" width="30px" height="30px">
+									<input type="text" id="editPhone" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Phone" disabled="">
 								</div>
 								<div class="d-flex align-items-center">
-									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px" >
-									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email" disabled>
+									<img class="mr-4 mt-4 mb-4" src="images/mail.png" width="30px" height="30px">
+									<input type="text" id="editEmail" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Email" disabled="">
 								</div>
 								<div class="d-flex align-items-center">
-									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px" >
-									<input type="text" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address" disabled>
+									<img class="mr-4 mt-4 mb-4" src="images/house.png" width="30px" height="30px">
+									<input type="text" id="editAddress" class="form-control w-75" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Address" disabled="">
 								</div>
 							</div>
 						</div>
@@ -232,8 +236,9 @@
 					  <div class="d-flex justify-content-center"> from your contacts?</div>
 					</div>
 					<div class="modal-footer">
+						<span id="deleteContactResult"></span>
 					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					  <button type="button" class="btn btn-danger">Delete</button>
+					  <button type="button" class="btn btn-danger" onclick="deleteContact()">Delete</button>
 					</div>
 				  </div>
 				</div>
@@ -248,5 +253,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-</body>
-</html>
+
+
+</body></html>
