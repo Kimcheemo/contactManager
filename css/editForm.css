@@ -1,0 +1,13 @@
+form.is-readonly .btn-save {
+	display: none;
+  }
+  form.is-readonly input[disabled], form.is-readonly textarea[disabled] {
+	cursor: text;
+	background-color: #fff;
+	border-color: transparent;
+	outline-color: transparent;
+	box-shadow: none;
+  }
+  form.is-editing .btn-edit {
+	display: none;
+  }
