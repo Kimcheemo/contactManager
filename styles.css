@@ -1,4 +1,6 @@
-
+.navbar{
+    background-color:#03a3ff;
+}
 .card {
 	margin: 10px 15%;
 }
@@ -26,6 +28,8 @@
   align-items: center;
   display: flex;
   padding: 5px;
+  background-color:rgb(170,215,236);
+  box-shadow: 5px 5px 5px rgba(0, 60, 255, 0.527);
 }
 
 .inputs {
