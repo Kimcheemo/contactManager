@@ -23,6 +23,8 @@
 .card-body {
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(170, 215, 236);
+  box-shadow: 5px 5px 5px rgba(30,59,112,0.2);
 }
 
 .inputs {
