@@ -17,7 +17,39 @@ $(function () {
 
 });
 
+function fillContactInfo()
+{
+	
+	var url = '/getContact.php';
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				var jsonObject = JSON.parse( xhr.responseText );
 
+				document.getElementById('editFirst').value = jsonObject.FirstName;
+				document.getElementById('editLast').value = jsonObject.LastName;
+				document.getElementById('editCompany').value = jsonObject.Company;
+				document.getElementById('editPhone').value = jsonObject.PhoneNumber;
+				document.getElementById('editEmail').value = jsonObject.Email;
+				document.getElementById('editAddress').value = jsonObject.Address;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactEditResult").innerHTML = "bad edit";
+	}
+	
+	
+}
 
 //populateContacts();
 
@@ -191,6 +223,7 @@ function createContactCard(firstName, lastName){
 	item1.setAttribute("tabindex", "-1" );
 	item1.innerText = "Edit";
 	item1.style.cursor = "pointer";
+	item1.addEventListener("click", fillContactInfo);
 	list1.appendChild(item1);
 
 	let list2 = document.createElement("li");
