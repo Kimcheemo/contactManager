@@ -55,7 +55,7 @@ function fillContactInfo()
 }
 
 
-function createContactCard(firstName, lastName, ID){
+function createContactCard(firstName, lastName){
 	let cardContainer = document.getElementById("card-container");
 	
 	let card = document.createElement("div");
