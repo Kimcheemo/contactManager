@@ -19,8 +19,11 @@ $(function () {
 
 function fillContactInfo()
 {
+	let contactID = CurrentContact.contactID;
+	var url = 'php/getContact.php';
 	
-	var url = '/getContact.php';
+	var tmp = {ID:contactID};
+	var jsonPayload = JSON.stringify( tmp );
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -51,122 +54,8 @@ function fillContactInfo()
 	
 }
 
-//populateContacts();
 
- // function populateContacts(){
-//	contacts.forEach(contact => createContactCard(contact));
-// }
-
-// function PopulateList()
-// {
-
-//   // Create a request variable and assign a new XMLHttpRequest object to it.
-//   var xhr = new XMLHttpRequest();
-//   var url = "api/getAllContact.php";
-
-//   // Sending and receiving data in JSON format using POST method
-//   xhr.open("POST", url, true);
-//   xhr.setRequestHeader("Content-Type", "application/json");
-//   xhr.onload = function () {
-//       if (xhr.readyState === 4 && xhr.status === 200) {
-//           var json = JSON.parse(xhr.responseText);
-//           if(json.status != 0)
-//             {
-//                 alert(json.message);
-//                 return;
-//             }
-//           if(json.contacts)
-//           {
-//             var contacts = json.contacts;
-//             contacts.forEach( function (obj)
-//             {
-//               CreateAccordion(obj.contact_id, obj.name, obj.phone,
-//                 obj.address, obj.email, obj.website);
-//             }
-//             );
-//             createCookie("jwt", json.jwt);
-//             createCookie("expireAt", json.expireAt);
-//           }
-//           else
-//           {
-//             alert(json.message);
-//           }
-//       }
-//       else {
-//         console.log('error')
-//       }
-//   };
-//   var data = JSON.stringify({"jwt": readCookie("jwt")});
-//   xhr.send(data);
-// }
-
-// function saveCookie()
-// {
-// 	var minutes = 20;
-// 	var date = new Date();
-// 	date.setTime(date.getTime()+(minutes*60*1000));	
-// 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-// }
-
-// function readCookie()
-// {
-// 	userId = -1;
-// 	var data = document.cookie;
-// 	var splits = data.split(",");
-// 	for(var i = 0; i < splits.length; i++) 
-// 	{
-// 		var thisOne = splits[i].trim();
-// 		var tokens = thisOne.split("=");
-// 		if( tokens[0] == "firstName" )
-// 		{
-// 			firstName = tokens[1];
-// 		}
-// 		else if( tokens[0] == "lastName" )
-// 		{
-// 			lastName = tokens[1];
-// 		}
-// 		else if( tokens[0] == "userId" )
-// 		{
-// 			userId = parseInt( tokens[1].trim() );
-// 		}
-// 	}
-	
-// 	if( userId < 0 )
-// 	{
-// 		window.location.href = "index.html";
-// 	}
-// 	else
-// 	{
-// 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-// 	}
-// }
-
-// function getCookieData(){
-// 	userId = -1;
-// 	var data = document.cookie;
-// 	var splits = data.split(",");
-// 	for(var i = 0; i < splits.length; i++) 
-// 	{
-// 		var thisOne = splits[i].trim();
-// 		var tokens = thisOne.split("=");
-// 		if( tokens[0] == "firstName" )
-// 		{
-// 			firstName = tokens[1];
-// 		}
-// 		else if( tokens[0] == "lastName" )
-// 		{
-// 			lastName = tokens[1];
-// 		}
-// 		else if( tokens[0] == "userId" )
-// 		{
-// 			userId = parseInt( tokens[1].trim() );
-// 		}
-// 	}
-	
-// 	return userId;
-// }
-
-function createContactCard(firstName, lastName){
+function createContactCard(firstName, lastName, ID){
 	let cardContainer = document.getElementById("card-container");
 	
 	let card = document.createElement("div");
@@ -236,6 +125,7 @@ function createContactCard(firstName, lastName){
 	item2.className = "ml-3";
 	item2.setAttribute("role", "menuitem" );
 	item2.setAttribute("tabindex", "-1" );
+	item2.addEventListener('click', addID);
 	item2.innerText = "Delete";
 	item2.style.color = "red";
 	item2.style.cursor = "pointer";
