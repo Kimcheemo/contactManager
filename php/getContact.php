@@ -11,7 +11,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select * from Contacts where UserID=?");
+		$stmt = $conn->prepare("SELECT * FROM Contacts where UserID=?");
 		$stmt->bind_param("i", $inData["UserID"]);
 		$stmt->execute();
 		
