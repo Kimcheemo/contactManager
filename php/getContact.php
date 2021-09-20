@@ -23,7 +23,7 @@
 		}
 		else
 		{
-			returnWithInfo( $searchResults );
+			returnWithError( "contact not found" );
 		}
 		
 		$stmt->close();
