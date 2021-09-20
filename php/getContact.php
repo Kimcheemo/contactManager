@@ -12,7 +12,7 @@
 	else
 	{
 		$stmt = $conn->prepare("SELECT * FROM Contacts where UserID=?");
-		$stmt->bind_param("i", $inData["UserID"]);
+		$stmt->bind_param("i", $id);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
